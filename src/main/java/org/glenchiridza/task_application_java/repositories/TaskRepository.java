@@ -17,6 +17,6 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     List<Task> getAllClosedTasks();
 
 
-    @Query(value = "SELECT CASE WHERE COUNT(t) > 0 THEN TRUE ELSE FALSE END FROM task t WHERE t.description = ?1")
+    @Query(value = "SELECT CASE WHEN COUNT(t) > 0 THEN TRUE ELSE FALSE END FROM task t WHERE t.description = ?1")
     boolean descriptionExists(String description);
 }
