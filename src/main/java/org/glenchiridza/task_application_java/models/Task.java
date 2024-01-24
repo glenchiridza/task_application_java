@@ -2,12 +2,13 @@ package org.glenchiridza.task_application_java.models;
 
 
 import jakarta.persistence.*;
+import lombok.Data;
 import lombok.NonNull;
 import org.glenchiridza.task_application_java.enums.Priority;
 
 import java.time.LocalDateTime;
 
-
+@Data
 @Entity
 @Table(name = "task",uniqueConstraints = {@UniqueConstraint(name="uk_task_description",columnNames= {"description"})})
 public class Task {
@@ -15,7 +16,7 @@ public class Task {
     @Id
     @GeneratedValue(generator = "task_sequence",strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "task_sequence",sequenceName = "task_sequence",allocationSize = 1)
-    private int id;
+    private Long id;
 
     @Column(name = "description", unique = true)
     private String description;
