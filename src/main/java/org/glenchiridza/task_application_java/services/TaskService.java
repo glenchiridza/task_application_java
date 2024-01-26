@@ -2,6 +2,7 @@ package org.glenchiridza.task_application_java.services;
 
 import org.glenchiridza.task_application_java.dto.TaskDto;
 import org.glenchiridza.task_application_java.dto.requests.TaskCreationRequest;
+import org.glenchiridza.task_application_java.exceptions.TaskNotFoundException;
 import org.glenchiridza.task_application_java.models.Task;
 import org.glenchiridza.task_application_java.repositories.TaskRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,12 @@ public class TaskService {
         task.setCreated_date(createRequest.getCreationDate());
         task.setPriority(createRequest.getPriority());
 
+    }
+
+    private void verifyTaskId(Long id){
+        if(!taskRepository.existsById(id)){
+            throw new TaskNotFoundException("task with the specified id was not found");
+        }
     }
 
 }
