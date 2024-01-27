@@ -17,7 +17,7 @@ import java.util.List;
 @CrossOrigin("*")
 public class TaskController {
 
-    private TaskService taskService;
+    private final TaskService taskService;
 
     @Autowired
     public TaskController(TaskService taskService) {
@@ -49,6 +49,7 @@ public class TaskController {
     public ResponseEntity<TaskDto> createTask(
             @RequestBody TaskCreationRequest creationRequest
             ){
+
         return new ResponseEntity<>(taskService.createTask(creationRequest),HttpStatus.OK);
     }
 

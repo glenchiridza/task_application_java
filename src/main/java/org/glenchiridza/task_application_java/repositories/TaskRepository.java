@@ -3,8 +3,10 @@ package org.glenchiridza.task_application_java.repositories;
 import org.glenchiridza.task_application_java.models.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 public interface TaskRepository extends JpaRepository<Task,Long> {
 
@@ -17,6 +19,6 @@ public interface TaskRepository extends JpaRepository<Task,Long> {
     List<Task> getAllClosedTasks();
 
 
-    @Query(value = "SELECT CASE WHEN COUNT(t) > 0 THEN TRUE ELSE FALSE END FROM task t WHERE t.description = ?1")
+    @Query(value = "SELECT CASE WHEN COUNT(t) > 0 THEN TRUE ELSE FALSE END FROM Task t WHERE t.description = ?1")
     boolean descriptionExists(String description);
 }

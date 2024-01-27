@@ -7,21 +7,19 @@ import org.glenchiridza.task_application_java.exceptions.BadRequestFoundExceptio
 import org.glenchiridza.task_application_java.exceptions.TaskNotFoundException;
 import org.glenchiridza.task_application_java.models.Task;
 import org.glenchiridza.task_application_java.repositories.TaskRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ReflectionUtils;
 
 import java.lang.reflect.Field;
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
 public class TaskService {
 
-    private TaskRepository taskRepository;
+    private final TaskRepository taskRepository;
 
-    @Autowired
+
     public TaskService(TaskRepository taskRepository) {
         this.taskRepository = taskRepository;
     }
@@ -32,7 +30,7 @@ public class TaskService {
                 task.getDescription(),
                 task.getIsReminderOn(),
                 task.getIsTaskPending(),
-                task.getCreated_date(),
+                task.getCreatedDate(),
                 task.getPriority()
         );
     }
@@ -42,7 +40,6 @@ public class TaskService {
         task.setDescription(createRequest.getDescription());
         task.setIsReminderOn(createRequest.getIsReminderOn());
         task.setIsTaskPending(createRequest.getIsTaskPending());
-        task.setCreated_date(createRequest.getCreationDate());
         task.setPriority(createRequest.getPriority());
 
     }

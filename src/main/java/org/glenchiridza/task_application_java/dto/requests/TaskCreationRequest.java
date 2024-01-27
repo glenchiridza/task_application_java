@@ -14,6 +14,5 @@ public class TaskCreationRequest {
     private  String description;
     private Boolean isReminderOn;
     private Boolean isTaskPending;
-    private LocalDateTime creationDate;
     private Priority priority;
 }

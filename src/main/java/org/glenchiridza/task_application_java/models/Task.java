@@ -28,7 +28,7 @@ public class Task {
     private Boolean isTaskPending =true;
 
     @Column(name = "created_date",nullable = false)
-    private LocalDateTime created_date;
+    private LocalDateTime createdDate = LocalDateTime.now();
 
     @Column(name = "updated_date")
     private LocalDateTime updatedDate;
